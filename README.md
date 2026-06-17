@@ -28,3 +28,12 @@ The initial Express application, basic routes, EJS views, public folders and pro
 
 ```bash
 npm install
+
+
+## Planned features
+
+- Brazilian-inspired wildlife habitats
+- Habitat and experience pages using database content
+- Contact form with validation
+- AJAX wildlife search
+- Interactive Brazilian wildlife activity
