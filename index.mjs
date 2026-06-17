@@ -47,6 +47,69 @@ app.get("/habitats", (req, res) => {
     });
 });
 
+// Individual habitat details page route
+app.get("/habitats/:id", (req, res) => {
+    // Gets the habitat id from the URL
+    const habitatId = req.params.id;
+
+    // SQL query to get the selected habitat
+    const habitatSql = "SELECT * FROM habitats WHERE habitat_id = ?";
+
+    // SQL query to get animals linked to the selected habitat
+    const animalsSql = "SELECT * FROM animals WHERE habitat_id = ? ORDER BY name";
+
+    // SQL query to get experiences linked to the selected habitat
+    const experiencesSql = "SELECT * FROM experiences WHERE habitat_id = ? ORDER BY name";
+
+    // SQL query to get plants linked to the selected habitat
+    const plantsSql = "SELECT * FROM plants WHERE habitat_id = ? ORDER BY name";
+
+    db.get(habitatSql, [habitatId], (habitatError, habitat) => {
+        if (habitatError) {
+            console.error("Error loading habitat:", habitatError.message);
+            res.status(500).send("An error occurred while loading the habitat.");
+            return;
+        }
+
+        if (!habitat) {
+            res.status(404).send("Habitat not found.");
+            return;
+        }
+
+        db.all(animalsSql, [habitatId], (animalsError, animals) => {
+            if (animalsError) {
+                console.error("Error loading animals:", animalsError.message);
+                res.status(500).send("An error occurred while loading animals.");
+                return;
+            }
+
+            db.all(experiencesSql, [habitatId], (experiencesError, experiences) => {
+                if (experiencesError) {
+                    console.error("Error loading experiences:", experiencesError.message);
+                    res.status(500).send("An error occurred while loading experiences.");
+                    return;
+                }
+
+                db.all(plantsSql, [habitatId], (plantsError, plants) => {
+                    if (plantsError) {
+                        console.error("Error loading plants:", plantsError.message);
+                        res.status(500).send("An error occurred while loading plants.");
+                        return;
+                    }
+
+                    res.render("pages/habitat-details", {
+                        pageTitle: habitat.name,
+                        habitat: habitat,
+                        animals: animals,
+                        experiences: experiences,
+                        plants: plants
+                    });
+                });
+            });
+        });
+    });
+});
+
 // Experiences page route
 app.get("/experiences", (req, res) => {
     res.render("pages/experiences", {

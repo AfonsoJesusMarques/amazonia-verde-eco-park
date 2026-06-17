@@ -1,0 +1,79 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+
+<main class="page-content">
+    <a href="/habitats" class="back-link">← Back to Habitats</a>
+
+    <section class="details-hero">
+        <h1><%= habitat.name %></h1>
+
+        <p class="lead-text">
+            <%= habitat.full_description %>
+        </p>
+
+        <p>
+            <strong>Region inspiration:</strong>
+            <%= habitat.region_inspiration %>
+        </p>
+    </section>
+
+    <section class="details-section">
+        <h2>Animals in this Habitat</h2>
+
+        <% if (animals.length > 0) { %>
+            <div class="card-grid">
+                <% animals.forEach((animal) => { %>
+                    <article class="card">
+                        <h3><%= animal.name %></h3>
+                        <p><strong>Brazilian name:</strong> <%= animal.brazilian_name %></p>
+                        <p><strong>Species:</strong> <em><%= animal.species %></em></p>
+                        <p><%= animal.description %></p>
+                        <p><strong>Fun fact:</strong> <%= animal.fun_fact %></p>
+                    </article>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>No animals have been added for this habitat yet.</p>
+        <% } %>
+    </section>
+
+    <section class="details-section">
+        <h2>Experiences and Exhibits</h2>
+
+        <% if (experiences.length > 0) { %>
+            <div class="card-grid">
+                <% experiences.forEach((experience) => { %>
+                    <article class="card">
+                        <h3><%= experience.name %></h3>
+                        <p><%= experience.description %></p>
+                        <p><strong>Type:</strong> <%= experience.experience_type %></p>
+                        <p><strong>Suitable for:</strong> <%= experience.suitable_for %></p>
+                    </article>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>No experiences have been added for this habitat yet.</p>
+        <% } %>
+    </section>
+
+    <section class="details-section">
+        <h2>Plants and Natural Features</h2>
+
+        <% if (plants.length > 0) { %>
+            <div class="card-grid">
+                <% plants.forEach((plant) => { %>
+                    <article class="card">
+                        <h3><%= plant.name %></h3>
+                        <p><strong>Brazilian name:</strong> <%= plant.brazilian_name %></p>
+                        <p><%= plant.description %></p>
+                        <p><strong>Fun fact:</strong> <%= plant.fun_fact %></p>
+                    </article>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>No plants have been added for this habitat yet.</p>
+        <% } %>
+    </section>
+</main>
+
+<%- include("../partials/footer") %>

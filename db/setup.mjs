@@ -347,6 +347,22 @@ db.serialize(() => {
             'A colourful flowering tree often associated with Brazilian landscapes.',
             'Ipê trees can produce bright yellow, pink or purple flowers.',
             'ipe-tree.jpg'
+        )        ,
+        (
+            2,
+            'Kapok Tree',
+            'Sumaúma',
+            'A very tall rainforest tree that provides shelter and food for many forest species.',
+            'The kapok tree can grow extremely tall and is often called one of the giants of the rainforest.',
+            'kapok-tree.jpg'
+        ),
+        (
+            3,
+            'Buriti Palm',
+            'Buriti',
+            'A palm tree often found in wetland and water-rich environments.',
+            'Buriti fruit is important for wildlife and is also used by local communities.',
+            'buriti-palm.jpg'
         )
     `);
 
