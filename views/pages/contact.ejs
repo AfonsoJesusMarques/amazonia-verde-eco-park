@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+
+<main class="page-content">
+    <h1>Contact Us</h1>
+    <p>Use the form below to send us a message.</p>
+
+    <form id="contactForm" class="contact-form" method="POST" action="/contact">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <p id="formMessage"></p>
+</main>
+
+<script src="/js/form-validation.js"></script>
+
+<%- include("../partials/footer") %>
