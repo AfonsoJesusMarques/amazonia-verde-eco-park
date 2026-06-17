@@ -3,7 +3,32 @@
 
 <main class="page-content">
     <h1>Habitats</h1>
-    <p>Explore Brazilian-inspired habitats including rainforest rivers, wetlands, forests and canopy trails.</p>
+
+    <p>
+        Explore Brazilian-inspired habitats including rainforest rivers, wetlands,
+        forests and canopy trails.
+    </p>
+
+    <section class="card-grid">
+        <% habitats.forEach((habitat) => { %>
+            <article class="card">
+                <h2><%= habitat.name %></h2>
+
+                <p>
+                    <%= habitat.short_description %>
+                </p>
+
+                <p>
+                    <strong>Inspired by:</strong>
+                    <%= habitat.region_inspiration %>
+                </p>
+
+                <a href="/habitats/<%= habitat.habitat_id %>" class="button">
+                    View Habitat
+                </a>
+            </article>
+        <% }) %>
+    </section>
 </main>
 
 <%- include("../partials/footer") %>

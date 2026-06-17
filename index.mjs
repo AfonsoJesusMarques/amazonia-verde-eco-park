@@ -1,11 +1,14 @@
 // Imports the Express framework
 import express from "express";
+import sqlite3 from "sqlite3";
 
 // Creates the Express application
 const app = express();
 
 // Sets the port number required by the assessment brief
 const PORT = 5000;
+
+const db = new sqlite3.Database("./database.db");
 
 // Sets EJS as the view engine
 app.set("view engine", "ejs");
@@ -28,8 +31,19 @@ app.get("/", (req, res) => {
 
 // Habitats page route
 app.get("/habitats", (req, res) => {
-    res.render("pages/habitats", {
-        pageTitle: "Habitats"
+    const sql = "SELECT * FROM habitats ORDER BY name";
+
+    db.all(sql, [], (error, habitats) => {
+        if (error) {
+            console.error("Error loading habitats:", error.message);
+            res.status(500).send("An error occurred while loading habitats.");
+            return;
+        }
+
+        res.render("pages/habitats", {
+            pageTitle: "Habitats",
+            habitats: habitats
+        });
     });
 });
 
