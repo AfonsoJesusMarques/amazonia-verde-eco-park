@@ -219,3 +219,24 @@ button:hover {
     border-bottom: 2px solid #f2b705;
     padding-bottom: 0.5rem;
 }
+
+.faq-list {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.faq-item h2 {
+    margin-top: 0.4rem;
+    color: #0f3d2e;
+}
+
+.faq-category {
+    display: inline-block;
+    background-color: #e6f2dc;
+    color: #0f3d2e;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}

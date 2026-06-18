@@ -144,8 +144,19 @@ app.get("/experiences", (req, res) => {
 
 // FAQ page route
 app.get("/faq", (req, res) => {
-    res.render("pages/faq", {
-        pageTitle: "FAQ"
+    const sql = "SELECT * FROM faqs ORDER BY category, faq_id";
+
+    db.all(sql, [], (error, faqs) => {
+        if (error) {
+            console.error("Error loading FAQs:", error.message);
+            res.status(500).send("An error occurred while loading FAQs.");
+            return;
+        }
+
+        res.render("pages/faq", {
+            pageTitle: "FAQ",
+            faqs: faqs
+        });
     });
 });
 

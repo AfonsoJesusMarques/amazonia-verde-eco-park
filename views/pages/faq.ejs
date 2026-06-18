@@ -3,7 +3,20 @@
 
 <main class="page-content">
     <h1>Frequently Asked Questions</h1>
-    <p>Find answers to common questions about visiting Amazônia Verde Eco Adventure Park.</p>
+
+    <p>
+        Find answers to common questions about visiting Amazônia Verde Eco Adventure Park.
+    </p>
+
+    <section class="faq-list">
+        <% faqs.forEach((faq) => { %>
+            <article class="card faq-item">
+                <p class="faq-category"><%= faq.category %></p>
+                <h2><%= faq.question %></h2>
+                <p><%= faq.answer %></p>
+            </article>
+        <% }) %>
+    </section>
 </main>
 
 <%- include("../partials/footer") %>
