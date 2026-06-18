@@ -219,6 +219,71 @@ app.get("/search", (req, res) => {
     });
 });
 
+// AJAX search API route
+app.get("/api/search", (req, res) => {
+    const searchTerm = req.query.q;
+
+    if (!searchTerm) {
+        res.json([]);
+        return;
+    }
+
+    const searchValue = `%${searchTerm}%`;
+
+    const sql = `
+        SELECT 
+            'Habitat' AS result_type,
+            habitat_id AS id,
+            name,
+            short_description AS description,
+            '/habitats/' || habitat_id AS link
+        FROM habitats
+        WHERE name LIKE ? OR short_description LIKE ? OR region_inspiration LIKE ?
+
+        UNION ALL
+
+        SELECT
+            'Animal' AS result_type,
+            animal_id AS id,
+            name,
+            description,
+            '/habitats/' || habitat_id AS link
+        FROM animals
+        WHERE name LIKE ? OR brazilian_name LIKE ? OR description LIKE ? OR fun_fact LIKE ?
+
+        UNION ALL
+
+        SELECT
+            'Experience' AS result_type,
+            experience_id AS id,
+            name,
+            description,
+            '/habitats/' || habitat_id AS link
+        FROM experiences
+        WHERE name LIKE ? OR description LIKE ? OR experience_type LIKE ? OR suitable_for LIKE ?
+
+        ORDER BY result_type, name
+    `;
+
+    db.all(
+        sql,
+        [
+            searchValue, searchValue, searchValue,
+            searchValue, searchValue, searchValue, searchValue,
+            searchValue, searchValue, searchValue, searchValue
+        ],
+        (error, results) => {
+            if (error) {
+                console.error("Error running search:", error.message);
+                res.status(500).json({ error: "Search failed." });
+                return;
+            }
+
+            res.json(results);
+        }
+    );
+});
+
 // Activity page route
 app.get("/activity", (req, res) => {
     res.render("pages/activity", {

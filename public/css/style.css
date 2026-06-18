@@ -262,3 +262,42 @@ button:hover {
     display: none;
     margin-top: 1rem;
 }
+
+.search-box {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.search-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 600px;
+    padding: 0.8rem;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-results {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.search-result-card h2 {
+    margin-top: 0.4rem;
+}
+
+.result-type {
+    display: inline-block;
+    background-color: #e6f2dc;
+    color: #0f3d2e;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
