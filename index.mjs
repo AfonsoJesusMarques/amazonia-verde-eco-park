@@ -163,7 +163,52 @@ app.get("/faq", (req, res) => {
 // Contact page route
 app.get("/contact", (req, res) => {
     res.render("pages/contact", {
-        pageTitle: "Contact Us"
+        pageTitle: "Contact Us",
+        successMessage: null,
+        errorMessage: null
+    });
+});
+
+// Contact form submission route
+app.post("/contact", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const subject = req.body.subject;
+    const message = req.body.message;
+    const submittedAt = new Date().toISOString();
+
+    if (!name || !email || !subject || !message) {
+        res.render("pages/contact", {
+            pageTitle: "Contact Us",
+            successMessage: null,
+            errorMessage: "Please complete all fields before submitting the form."
+        });
+        return;
+    }
+
+    const sql = `
+        INSERT INTO contact_messages
+        (name, email, subject, message, submitted_at)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.run(sql, [name, email, subject, message, submittedAt], (error) => {
+        if (error) {
+            console.error("Error saving contact message:", error.message);
+
+            res.render("pages/contact", {
+                pageTitle: "Contact Us",
+                successMessage: null,
+                errorMessage: "There was a problem sending your message. Please try again."
+            });
+            return;
+        }
+
+        res.render("pages/contact", {
+            pageTitle: "Contact Us",
+            successMessage: "Thank you. Your message has been sent successfully.",
+            errorMessage: null
+        });
     });
 });
 

@@ -3,9 +3,20 @@
 
 <main class="page-content">
     <h1>Contact Us</h1>
-    <p>Use the form below to send us a message.</p>
 
-    <form id="contactForm" class="contact-form" method="POST" action="/contact">
+    <p>
+        Use the form below to send a message to the Amazônia Verde team.
+    </p>
+
+    <% if (successMessage) { %>
+        <p class="success-message"><%= successMessage %></p>
+    <% } %>
+
+    <% if (errorMessage) { %>
+        <p class="error-message"><%= errorMessage %></p>
+    <% } %>
+
+    <form id="contactForm" class="contact-form" method="POST" action="/contact" novalidate>
         <label for="name">Name</label>
         <input type="text" id="name" name="name">
 
