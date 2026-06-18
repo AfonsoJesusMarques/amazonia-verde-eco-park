@@ -284,6 +284,32 @@ app.get("/api/search", (req, res) => {
     );
 });
 
+// AJAX random wildlife fact API route
+app.get("/api/random-fact", (req, res) => {
+    const sql = `
+        SELECT 
+            animals.name,
+            animals.brazilian_name,
+            animals.fun_fact,
+            habitats.name AS habitat_name
+        FROM animals
+        INNER JOIN habitats
+            ON animals.habitat_id = habitats.habitat_id
+        ORDER BY RANDOM()
+        LIMIT 1
+    `;
+
+    db.get(sql, [], (error, fact) => {
+        if (error) {
+            console.error("Error loading random fact:", error.message);
+            res.status(500).json({ error: "Random fact failed." });
+            return;
+        }
+
+        res.json(fact);
+    });
+});
+
 // Activity page route
 app.get("/activity", (req, res) => {
     res.render("pages/activity", {
