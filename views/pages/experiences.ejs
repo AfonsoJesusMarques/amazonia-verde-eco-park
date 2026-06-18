@@ -2,8 +2,41 @@
 <%- include("../partials/nav") %>
 
 <main class="page-content">
-    <h1>Experiences</h1>
-    <p>Discover interactive exhibits, wildlife talks and conservation activities.</p>
+    <h1>Experiences and Exhibits</h1>
+
+    <p>
+        Discover interactive exhibits, wildlife talks and conservation activities
+        inspired by Brazilian habitats and ecosystems.
+    </p>
+
+    <section class="card-grid">
+        <% experiences.forEach((experience) => { %>
+            <article class="card">
+                <h2><%= experience.name %></h2>
+
+                <p>
+                    <%= experience.description %>
+                </p>
+
+                <p>
+                    <strong>Type:</strong>
+                    <%= experience.experience_type %>
+                </p>
+
+                <p>
+                    <strong>Suitable for:</strong>
+                    <%= experience.suitable_for %>
+                </p>
+
+                <p>
+                    <strong>Habitat:</strong>
+                    <a href="/habitats/<%= experience.habitat_id %>">
+                        <%= experience.habitat_name %>
+                    </a>
+                </p>
+            </article>
+        <% }) %>
+    </section>
 </main>
 
 <%- include("../partials/footer") %>

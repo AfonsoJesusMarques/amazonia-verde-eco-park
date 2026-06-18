@@ -112,8 +112,33 @@ app.get("/habitats/:id", (req, res) => {
 
 // Experiences page route
 app.get("/experiences", (req, res) => {
-    res.render("pages/experiences", {
-        pageTitle: "Experiences"
+    const sql = `
+        SELECT 
+            experiences.experience_id,
+            experiences.name,
+            experiences.description,
+            experiences.experience_type,
+            experiences.suitable_for,
+            experiences.image,
+            habitats.habitat_id,
+            habitats.name AS habitat_name
+        FROM experiences
+        INNER JOIN habitats
+            ON experiences.habitat_id = habitats.habitat_id
+        ORDER BY experiences.name
+    `;
+
+    db.all(sql, [], (error, experiences) => {
+        if (error) {
+            console.error("Error loading experiences:", error.message);
+            res.status(500).send("An error occurred while loading experiences.");
+            return;
+        }
+
+        res.render("pages/experiences", {
+            pageTitle: "Experiences",
+            experiences: experiences
+        });
     });
 });
 
