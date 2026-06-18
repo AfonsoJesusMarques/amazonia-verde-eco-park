@@ -3,7 +3,26 @@
 
 <main class="page-content">
     <h1>Brazilian Wildlife Match</h1>
-    <p>Test your knowledge by matching Brazilian animals to their habitats.</p>
+
+    <p>
+        Test your knowledge by matching Brazilian animals to the correct habitat.
+    </p>
+
+    <section class="activity-card">
+        <h2 id="animalQuestion">Loading question...</h2>
+
+        <div id="answerButtons" class="answer-buttons"></div>
+
+        <p id="activityFeedback" class="activity-feedback"></p>
+
+        <p class="score-text">
+            Score: <span id="score">0</span>
+        </p>
+
+        <button id="nextQuestionButton" type="button">
+            Next Question
+        </button>
+    </section>
 </main>
 
 <script src="/js/activity.js"></script>

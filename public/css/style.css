@@ -315,3 +315,40 @@ button:hover {
 .fact-result .card {
     max-width: 700px;
 }
+
+.activity-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    max-width: 750px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+.answer-buttons {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.answer-button {
+    width: 100%;
+    text-align: left;
+}
+
+.activity-feedback {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.correct-feedback {
+    color: #0f3d2e;
+}
+
+.wrong-feedback {
+    color: #b00020;
+}
+
+.score-text {
+    font-weight: bold;
+}
