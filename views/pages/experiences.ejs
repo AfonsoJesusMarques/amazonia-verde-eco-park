@@ -1,42 +1,44 @@
 <%- include("../partials/header") %>
-<%- include("../partials/nav") %>
+    <%- include("../partials/nav") %>
 
-<main class="page-content">
-    <h1>Experiences and Exhibits</h1>
+        <main class="page-content">
+            <h1>Experiences and Exhibits</h1>
 
-    <p>
-        Discover interactive exhibits, wildlife talks and conservation activities
-        inspired by Brazilian habitats and ecosystems.
-    </p>
+            <p>
+                Discover interactive exhibits, wildlife talks and conservation activities
+                inspired by Brazilian habitats and ecosystems.
+            </p>
 
-    <section class="card-grid">
-        <% experiences.forEach((experience) => { %>
-            <article class="card">
-                <h2><%= experience.name %></h2>
+            <section class="card-grid">
+                <% experiences.forEach((experience)=> { %>
+                    <a href="/habitats/<%= experience.habitat_id %>" class="card experience-card-link">
+                        <article>
+                            <h2>
+                                <%= experience.name %>
+                            </h2>
 
-                <p>
-                    <%= experience.description %>
-                </p>
+                            <p>
+                                <%= experience.description %>
+                            </p>
 
-                <p>
-                    <strong>Type:</strong>
-                    <%= experience.experience_type %>
-                </p>
+                            <p>
+                                <strong>Type:</strong>
+                                <%= experience.experience_type %>
+                            </p>
 
-                <p>
-                    <strong>Suitable for:</strong>
-                    <%= experience.suitable_for %>
-                </p>
+                            <p>
+                                <strong>Suitable for:</strong>
+                                <%= experience.suitable_for %>
+                            </p>
 
-                <p>
-                    <strong>Habitat:</strong>
-                    <a href="/habitats/<%= experience.habitat_id %>">
-                        <%= experience.habitat_name %>
+                            <p>
+                                <strong>Habitat:</strong>
+                                <%= experience.habitat_name %>
+                            </p>
+                        </article>
                     </a>
-                </p>
-            </article>
-        <% }) %>
-    </section>
-</main>
+                    <% }) %>
+            </section>
+        </main>
 
-<%- include("../partials/footer") %>
+        <%- include("../partials/footer") %>
