@@ -12,6 +12,12 @@
     <section class="card-grid">
         <% habitats.forEach((habitat) => { %>
             <article class="card">
+                <img 
+                    src="/images/<%= habitat.image %>" 
+                    alt="<%= habitat.name %>" 
+                    class="card-image"
+                >
+                
                 <h2><%= habitat.name %></h2>
 
                 <p>
