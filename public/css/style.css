@@ -6,12 +6,22 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #1f2f1f;
-    background-color: #f5f2e8;
+    background:
+        linear-gradient(rgba(15, 61, 46, 0.45), rgba(15, 61, 46, 0.45)),
+        url("/images/hero-amazonia.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+
 .site-header {
-    background-color: #0f3d2e;
+    background-color: rgba(15, 61, 46, 0.45);
     color: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30);
 }
 
 .navbar {
@@ -48,23 +58,38 @@ body {
 }
 
 .hero {
-    min-height: 70vh;
-    background: linear-gradient(rgba(15, 61, 46, 0.75), rgba(15, 61, 46, 0.75));
+    min-height: 60vh;
+    background: transparent;
     color: white;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
-    padding: 2rem;
+    padding: 8rem 2rem 2rem;
 }
 
 .hero-content {
     max-width: 800px;
+    background-color: rgba(15, 61, 46, 0.45);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.30);
 }
 
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin: 0 0 0.5rem;
+}
+
+.hero-content p {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.hero-content .button {
+    display: inline-block;
+    margin-top: 0.5rem;
 }
 
 .opening-times {
@@ -93,10 +118,14 @@ button:hover {
 }
 
 .intro-section,
-.page-content {
+.page-content,
+.fact-section {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 2rem;
+    background-color: rgba(245, 242, 232, 0.94);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
 }
 
 .contact-form {
@@ -119,11 +148,12 @@ button:hover {
 }
 
 .site-footer {
-    background-color: #0f3d2e;
+    background-color: rgba(15, 61, 46, 0.65);
     color: white;
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    margin-top: auto;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.30);
 }
 
 @media (max-width: 768px) {
@@ -301,12 +331,6 @@ button:hover {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: bold;
-}
-
-.fact-section {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
 }
 
 .fact-result {
