@@ -411,3 +411,44 @@ button:hover {
     outline: 3px solid #f2b705;
     outline-offset: 4px;
 }
+
+img {
+    max-width: 100%;
+}
+
+input,
+textarea,
+button {
+    font-family: inherit;
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .page-content,
+    .intro-section,
+    .fact-section {
+        margin: 1rem;
+        padding: 1.2rem;
+    }
+
+    .button,
+    button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .site-footer {
+        font-size: 0.9rem;
+    }
+}

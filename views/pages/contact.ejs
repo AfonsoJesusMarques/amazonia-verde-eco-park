@@ -18,21 +18,21 @@
 
     <form id="contactForm" class="contact-form" method="POST" action="/contact" novalidate>
         <label for="name">Name</label>
-        <input type="text" id="name" name="name">
-
+        <input type="text" id="name" name="name" autocomplete="name">
+    
         <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-
+        <input type="email" id="email" name="email" autocomplete="email">
+    
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject">
-
+        <input type="text" id="subject" name="subject" autocomplete="off">
+    
         <label for="message">Message</label>
-        <textarea id="message" name="message"></textarea>
-
+        <textarea id="message" name="message" autocomplete="off"></textarea>
+    
         <button type="submit">Send Message</button>
     </form>
 
-    <p id="formMessage"></p>
+    <p id="formMessage" role="alert"></p>
 </main>
 
 <script src="/js/form-validation.js"></script>
