@@ -9,7 +9,7 @@
                 inspired by Brazilian habitats and ecosystems.
             </p>
 
-            <section class="card-grid">
+            <div  class="card-grid">
                 <% experiences.forEach((experience)=> { %>
                     <a href="/habitats/<%= experience.habitat_id %>" class="card experience-card-link">
                         <article>
@@ -38,7 +38,7 @@
                         </article>
                     </a>
                     <% }) %>
-            </section>
+            </div >
         </main>
 
         <%- include("../partials/footer") %>
